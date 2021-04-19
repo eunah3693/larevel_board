@@ -26,8 +26,7 @@ Route::get('/create_account', [Login_con::class,'index']);
 Route::post('/create', [Login_con::class,'create']);
 Route::get('/login', [Login_con::class,'login']);
 Route::post('/check', [Login_con::class,'check_user']);
-Route::get('/welcome', [Login_con::class,'protect']);
-Route::get('/logout', [Login_con::class,'logout']);
+
 
 Route::group(['middleware' => ['user']], function () {
     Route::get('/reg', [Employee::class,'registration']);
@@ -36,4 +35,6 @@ Route::group(['middleware' => ['user']], function () {
     Route::get('/edit/{id}', [Employee::class,'edit_data']);
     Route::post('/update_data', [Employee::class,'update']);
     Route::get('/delete/{id}', [Employee::class,'remove']);
+    Route::get('/welcome', [Login_con::class,'protect']);
+    Route::get('/logout', [Login_con::class,'logout']);
 });

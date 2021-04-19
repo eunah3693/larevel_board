@@ -58,7 +58,9 @@ class Login_con extends Controller
             return redirect('/login');
         }else{
             $name=$r->session()->get('name');
-            //dd($username);
+            $id=$r->session()->get('id');
+            //dd($name);
+            //dd($id);
             $capsule=array('name' => $name);
             
             return view('protect')->with($capsule);

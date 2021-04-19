@@ -17,10 +17,12 @@ class UserSessionCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->get('id')) {
+        if (Auth::check() && !$request->session()->get('id')) {
             $user = Auth::user();
-            //session()->put('id', $user->id);
-            //session()->put('name', $user->name);
+            //dd($request->session()->get('id'));
+            session()->put('id', $user->id);
+            session()->put('name', $user->name);
+            dd($request->session()->get('id'));
         }
         return $next($request);
     }
