@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Employee;
 use App\Http\Controllers\Login_con;
+use App\Http\Controllers\reply_con;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,9 @@ Route::group(['middleware' => ['user']], function () {
     Route::get('/delete/{id}', [Employee::class,'remove']);
     Route::get('/welcome', [Login_con::class,'protect']);
     Route::get('/logout', [Login_con::class,'logout']);
+    Route::get('/all', [Employee::class,'all_data']);
+    Route::any('/data_reply/{id}', [reply_con::class,'data_reply']);
+
+
 });
+

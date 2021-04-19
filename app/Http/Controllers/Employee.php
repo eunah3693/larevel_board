@@ -25,8 +25,10 @@ class Employee extends Controller
 
     public function data_insert(Request $r)
     {
-       $name=$r->uname;
-       $job=$r->ujob;
+        if($r->session()->get('id')!=""){
+        $id=$r->session()->get('id');
+       $name=$r->session()->get('name');
+       $job=$r->session()->get('job');
        $op=$r->uop;
 
        $users=new Emp_model;
@@ -40,14 +42,25 @@ class Employee extends Controller
        if($insert){
            return redirect('/reg')->with('success','성공');
        }
+        }else{
+
+        }
     }
 
-    public function fetch()
+    public function fetch(Request $r)
     {
-        $fetch_data= DB::table('users')->get();
+        if($r->session()->get('id')!=""){
+            $name=$r->session()->get('name');
+            $data = DB::table('users')->where('name',$name)->get();
+            //dd($data);
+            $capsule = array('data'=>$data);
+           
+            return view('/show')->with($capsule);
 
-        $capsule = array('data'=>$fetch_data);
-        return view('show')->with($capsule);
+        }else{
+            return redirect('/login')->with('msg','로그인해주세요');
+        }
+
     }
 
     public function edit_data(Request $r)
@@ -82,4 +95,19 @@ class Employee extends Controller
     }
     }
 
+    
+    public function all_data(Request $r)
+    {
+        if($r->session()->get('is_admin')=="1"){
+            $data = DB::table('users')->get();
+            //dd($data);
+            $capsule = array('data'=>$data);
+           
+            return view('/all')->with($capsule);
+
+        }else{
+            return redirect('/login')->with('msg','로그인해주세요');
+        }
+
+    }
 }

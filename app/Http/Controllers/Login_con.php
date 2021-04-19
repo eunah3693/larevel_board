@@ -42,6 +42,8 @@ class Login_con extends Controller
         if($session){
             $r->session()->put('id',$session->id);
             $r->session()->put('name',$session->name);
+            $r->session()->put('job',$session->job);
+            $r->session()->put('is_admin',$session->is_admin);
             //dd($session[0]->name);
             return redirect('/welcome');
         }else{
@@ -59,6 +61,8 @@ class Login_con extends Controller
         }else{
             $name=$r->session()->get('name');
             $id=$r->session()->get('id');
+            $id=$r->session()->get('job');
+            $is_admin=$r->session()->get('is_admin');
             //dd($name);
             //dd($id);
             $capsule=array('name' => $name);
@@ -71,6 +75,8 @@ class Login_con extends Controller
     {
         $r->session()->forget('id');
         $r->session()->forget('name');
+        $r->session()->forget('job');
+        $r->session()->forget('is_admin');
 
         return redirect('/home');
     }

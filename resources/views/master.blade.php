@@ -20,10 +20,12 @@
     <ul class="nav navbar-nav">
       <li><a href="{{url('/home')}}">Home</a></li>
       <li>@if(!session()->get('id'))<a href=" {{url('/login')}} ">Login/Join</a>@else<a href=" {{url('/welcome')}} ">Logout</a>@endif</li>
-      {{--<li><a href="{{url('/about')}}">About</a></li>--}}
+      @if(session()->get('is_admin'))
+      <li><a href="{{url('/all')}}">Show AllData</a></li>
+      @else
       <li><a href="{{url('/reg')}}">Registration</a></li>
       <li><a href="{{url('/show_data')}}">Show Data</a></li>
-      {{--<li><a href="{{url('/create_account')}}">Create account</a></li>--}}
+      @endif
     </ul>
   </div>
 </nav>
