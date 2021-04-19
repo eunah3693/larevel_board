@@ -26,14 +26,14 @@ class Employee extends Controller
     public function data_insert(Request $r)
     {
        $name=$r->uname;
-       $email=$r->uemail;
-       $address=$r->uadd;
+       $job=$r->ujob;
+       $op=$r->uop;
 
        $users=new Emp_model;
 
        $users->name=$name;
-       $users->email=$email;
-       $users->address=$address;
+       $users->job=$job;
+       $users->op=$op;
 
        $insert=$users->save();
 
@@ -63,10 +63,10 @@ class Employee extends Controller
     {
         $update_id=$r->uid;
        $name=$r->uname;
-       $email=$r->uemail;
-       $add=$r->uadd;
+       $job=$r->ujob;
+       $op=$r->uop;
        
-        $update = DB::table('users')->where('id',$update_id)->update(['name'=> $name, 'email'=> $email, 'address'=> $add]);
+        $update = DB::table('users')->where('id',$update_id)->update(['name'=> $name, 'job'=> $job, 'op'=> $op]);
 
        if($update){
            return  redirect('show_data')->with('message','수정되었습니다');

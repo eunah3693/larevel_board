@@ -22,11 +22,11 @@
             </div>
             <div class="col-md-6">
                 <label>Email</label>
-                <input type="text" name="uemail" value="{{$key->email}}"  class="form-control" required>
+                <input type="text" name="ujob" value="{{$key->job}}"  class="form-control" required>
             </div>
             <div class="col-md-12">
-                <label>Address</label>
-                <input type="text" name="uadd" value="{{$key->address}}"  class="form-control" required>
+                <label>Opinion</label>
+                <input type="text" name="uop" value="{{$key->op}}"  class="form-control" required>
             </div>
         </div>
         <?php   } ?>

@@ -13,8 +13,8 @@
         <div class="row">
             
             <div class="col-md-6">
-                <label>Enter Email</label>
-                <input type="text" name="uemail" class="form-control" required>
+                <label>Enter Nickname</label>
+                <input type="text" name="uname" class="form-control" required>
             </div>
             <div class="col-md-6">
                 <label>Enter Password</label>
@@ -24,5 +24,6 @@
        
         <button type="submit" class="btn btn-primary">로그인</button>
     </form>
+    <a href="{{url('/create_account')}}" class="btn btn-primary">닉네임만들기</a>
 </div>
 @endsection

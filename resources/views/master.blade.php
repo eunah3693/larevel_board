@@ -23,6 +23,7 @@
       <li><a href="{{url('/reg')}}">Registration</a></li>
       <li><a href="{{url('/show_data')}}">Show Data</a></li>
       <li><a href="{{url('/create_account')}}">Create account</a></li>
+      <li><a href="{{url('/login')}}">Login</a></li>
     </ul>
   </div>
 </nav>

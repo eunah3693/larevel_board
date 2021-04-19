@@ -10,10 +10,10 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>sl. no.</th>
+                <th>no.</th>
                 <th>name</th>
-                <th>email</th>
-                <th>address</th>
+                <th>job</th>
+                <th>Opinion</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -26,8 +26,8 @@
                <tr>
                 <td>{{ $s1++ }}</td>
                 <td>{{ $key->name }}</td>
-                <td>{{ $key->email }}</td>
-                <td>{{ $key->address }}</td>
+                <td>{{ $key->job }}</td>
+                <td>{{ $key->op }}</td>
                 <td>
                     <a href="edit/{{$key->id}}" class="btn btn-info">Edit</a>
                     <a href="delete/{{$key->id}}" class="btn btn-danger">Delete</a>

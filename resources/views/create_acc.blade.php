@@ -8,12 +8,12 @@
         <div class="row">
             <div class="col-md-4">
                 <input type="hidden" name="uid"  >
-                <label>Name</label>
+                <label>Nickname</label>
                 <input type="text" name="uname" class="form-control" required>
             </div>
             <div class="col-md-4">
-                <label>Email</label>
-                <input type="text" name="uemail" class="form-control" required>
+                <label>job</label>
+                <input type="text" name="ujob" class="form-control" required>
             </div>
             <div class="col-md-4">
                 <label>Password</label>
