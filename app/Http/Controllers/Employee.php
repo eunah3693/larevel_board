@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\emp_model;
+use App\Models\reply;
 
 
 class Employee extends Controller
@@ -54,9 +55,11 @@ class Employee extends Controller
             $data = DB::table('users')->where('name',$name)->get();
             //dd($data);
             $capsule = array('data'=>$data);
-           
-            return view('/show')->with($capsule);
 
+            $reply = DB::table('reply')->get();
+            $capsule = array('reply'=>$reply);
+           
+            return view('/show', ['data' => $data ,'reply' => $reply]);
         }else{
             return redirect('/login')->with('msg','로그인해주세요');
         }

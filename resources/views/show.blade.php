@@ -14,7 +14,8 @@
                 <th>name</th>
                 <th>job</th>
                 <th>Opinion</th>
-                <th>Action</th>
+                <th>Reply</th>
+                {{--<th>Action</th>--}}
             </tr>
         </thead>
         <tbody>
@@ -28,10 +29,15 @@
                 <td>{{ $key->name }}</td>
                 <td>{{ $key->job }}</td>
                 <td>{{ $key->op }}</td>
-                <td>
+                <td>@foreach($reply as $k) 
+                @if($k->parent_id == $key->id)
+                {{ $k->reply }}
+                @endif
+                @endforeach </td>
+                {{--<td>
                     <a href="edit/{{$key->id}}" class="btn btn-info">Edit</a>
                     <a href="delete/{{$key->id}}" class="btn btn-danger">Delete</a>
-                </td>
+                </td>--}}
             </tr>
             <?php } ?>
         </tbody>

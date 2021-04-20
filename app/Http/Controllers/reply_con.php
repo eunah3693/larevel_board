@@ -37,47 +37,48 @@ class reply_con extends Controller
             $capsule = array('data'=>$data);
 
             $reply = DB::table('reply')->where('parent_id',$parent_id)->get();
+            //dd($reply);
             $capsule = array('reply'=>$reply);
            
-            return view('/all', ['data' => $data ,'reply' => $reply]);
+            return view('/all_detail', ['data' => $data ,'reply' => $reply]);
         }else{
             return redirect('/login')->with('msg','로그인해주세요');
         }
 
     }
 
+
+
     public function data_reply(Request $r)
     {
-        
         $parent_id=$r->id;
         $u_reply=$r->u_reply;
-        //dd($reply);
-        $reply = new reply;
-
-        $reply->parent_id=$parent_id;
-        $reply->reply=$u_reply;
-
-        $insert=$reply->save();
-        
-        if($insert){
-            return redirect('/all')->with($insert);
-        }
-    }
-
-    public function data_edit(Request $r)
-    {
-        $update_id=$r->uid;
-
-        dd($update_id);
-       $name=$r->uname;
-       $job=$r->ujob;
-       $op=$r->uop;
        
-        $update = DB::table('users')->where('id',$update_id)->update(['name'=> $name, 'job'=> $job, 'op'=> $op]);
+        $update = DB::table('reply')->where('parent_id',$parent_id)->get();
+        if($update->isEmpty()){
+            //답변이 비었을경우 
+            $reply = new reply;
 
-       if($update){
-           return  redirect('show_data')->with('message','수정되었습니다');
-       }
+            $reply->parent_id=$parent_id;
+            $reply->reply=$u_reply;
+
+            $insert=$reply->save();
+            
+            if($insert){
+                return redirect('/all_detail')->with($insert)->with('message','제출되었습니다');
+            }
+
+        }else{
+            //답변이 안비었을경우
+            $update = DB::table('reply')->where('parent_id',$parent_id)->update(['reply'=> $u_reply]);
+
+            if($update){
+                return  redirect('/all_detail')->with('message','수정되었습니다');
+            }
+        }
+
+
+        
     }
     public function fetch(Request $r)
     {

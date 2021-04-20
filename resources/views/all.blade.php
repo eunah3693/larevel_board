@@ -50,53 +50,6 @@
 </div>
 </div>
 </div>
-<script>
-    $(function(){
-        var reply;
-        
-        $(".submit").click(function(e){
-            //e.preventDefault();
-            var u_reply=$(this).parent().siblings(".u_reply").find("input").val();
-            var u_reply_id=$(this).parent().siblings(".u_reply").find("input").attr("id");
-            //console.log(u_reply);
-            
-           
-           $.ajax({
-                headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
-                type: "POST", //요청 메소드 방식
-                url: "/data_reply/"+u_reply_id,
-                data: {u_reply: JSON.stringify(u_reply)},
-                datatype: 'json',
-                success: function (data) {
-                    reply = data;
-                },
-                error: function (a, b, c) {
-                },
-            });
-            $(this).parent().siblings(".u_reply").find("input").text(reply);
-        })
-       
-        // $(".edit").click(function(e){
-        //     //e.preventDefault();
-        //     var u_reply=$(this).parent().siblings(".u_reply").find("input").val();
-        //     var u_reply_id=$(this).parent().siblings(".u_reply").find("input").attr("id");
-        //     //console.log(u_reply);
-        //     $.ajax({
-        //         headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
-        //         type: "POST", //요청 메소드 방식
-        //         url: "/data_eidt/"+u_reply_id,
-        //         data: {u_reply:u_reply},
-        //         datatype: 'json',
-        //         success: function (data) {
-        //             reply = data;
-        //         },
-        //         error: function (a, b, c) {
-        //         },
-        //     });
-        //     $(this).parent().siblings(".u_reply").find("input").text(reply);
-        // })
-    })
 
-</script>
 
 @endsection
