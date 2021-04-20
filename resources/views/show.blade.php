@@ -15,7 +15,7 @@
                 <th>job</th>
                 <th>Opinion</th>
                 <th>Reply</th>
-                {{--<th>Action</th>--}}
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -34,10 +34,11 @@
                 {{ $k->reply }}
                 @endif
                 @endforeach </td>
-                {{--<td>
-                    <a href="edit/{{$key->id}}" class="btn btn-info">Edit</a>
-                    <a href="delete/{{$key->id}}" class="btn btn-danger">Delete</a>
-                </td>--}}
+                <td>
+                {{--<a href="edit/{{$key->id}}" class="btn btn-info">Edit</a>
+                    <a href="delete/{{$key->id}}" class="btn btn-danger">Delete</a>--}}
+                    <a href="view_detail/{{$key->id}}" class="btn btn-info">View Reply</a>
+                </td>
             </tr>
             <?php } ?>
         </tbody>

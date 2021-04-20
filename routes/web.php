@@ -33,6 +33,7 @@ Route::group(['middleware' => ['user']], function () {
     Route::get('/reg', [Employee::class,'registration']);
     Route::post('/add_data', [Employee::class,'data_insert']);
     Route::get('/show_data', [Employee::class,'fetch']);
+    Route::get('/view_detail/{id}', [Employee::class,'fetch_detail']);
     Route::get('/edit/{id}', [Employee::class,'edit_data']);
     Route::post('/update_data', [Employee::class,'update']);
     Route::get('/delete/{id}', [Employee::class,'remove']);

@@ -65,6 +65,23 @@ class Employee extends Controller
         }
 
     }
+    public function fetch_detail(Request $r)
+    {
+        if($r->session()->get('id')!=""){
+            $id=$r->id;
+            $data = DB::table('users')->where('id',$id)->get();
+            //dd($data);
+            $capsule = array('data'=>$data);
+
+            $reply = DB::table('reply')->where('parent_id',$id)->get();
+            $capsule = array('reply'=>$reply);
+           
+            return view('/view_detail', ['data' => $data ,'reply' => $reply]);
+        }else{
+            return redirect('/login')->with('msg','로그인해주세요');
+        }
+
+    }
 
     public function edit_data(Request $r)
     {
