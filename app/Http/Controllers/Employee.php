@@ -96,18 +96,5 @@ class Employee extends Controller
     }
 
     
-    public function all_data(Request $r)
-    {
-        if($r->session()->get('is_admin')=="1"){
-            $data = DB::table('users')->get();
-            //dd($data);
-            $capsule = array('data'=>$data);
-           
-            return view('/all')->with($capsule);
 
-        }else{
-            return redirect('/login')->with('msg','로그인해주세요');
-        }
-
-    }
 }

@@ -1,18 +1,31 @@
 @extends('master')
 @section('content')
 <div class="card-body">
-
+@if(session()->get('message'))
+<div class="alert alert-info">
+   {{session()->get('message')}}
+</div>
+@endif
     <div class="table-responsive">
     <form action="/data_reply" method="post">
     @csrf
-    <table class="table table-bordered">
+    @foreach($data as $key)
+    <h1>{{ $key->name }}</h1>
+    @endforeach
+    {{--<table class="table table-bordered">
         <thead>
             <tr>
                 <th>no.</th>
                 <th>name</th>
                 <th>job</th>
+            </tr>
+            <tr>
                 <th>Opinion</th>
+            </tr>
+            <tr>
                 <th>Reply</th>
+            </tr>
+            <tr>
                 <th>Action</th>
             </tr>
         </thead>
@@ -26,8 +39,11 @@
                 <td>{{ $s1++ }} </td>
                 <td>{{ $key->name }}</td>
                 <td>{{ $key->job }}</td>
+                </tr>
+                <tr>
                 <td ><span style="display:block; width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ $key->op }}</span></td>
-                
+                </tr>
+                <tr>
                 <td class="u_reply" id="{{$key->id}}" >
                     @foreach($reply as $k)
                     @if($key->id==$k->parent_id)
@@ -35,16 +51,17 @@
                     @endif
                     @endforeach
                 </td>
-                
+                </tr>
+                <tr>
                 <td>
-                    <button type="button" class="btn btn-info view" style="padding:0; "><a href="all_detail/{{$key->id}}" style="color:#fff;">View</a></button>
+                    <button type="button" class="btn btn-info view" style="padding:0; ">View</button>
                    {{--<button type="button" class="btn btn-danger submit" style="padding:0; ">Submit</button>
                     <button type="button" class="btn btn-danger edit" style="padding:0; ">Edit</button>--}}
                 </td>
-            </tr>
+                </tr>
             <?php } ?>
         </tbody>
-        </table>
+        </table>--}}
         </form>
     </div>
 </div>
