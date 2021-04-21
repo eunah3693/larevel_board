@@ -46,6 +46,9 @@
         </tbody>
         </table>
         </form>
+        <div style="text-align:center;">
+        {{ $data->appends(request()->input())->links() }}
+        </div>
     </div>
 </div>
 </div>

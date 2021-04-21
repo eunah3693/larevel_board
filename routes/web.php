@@ -40,7 +40,7 @@ Route::group(['middleware' => ['user']], function () {
     Route::get('/welcome', [Login_con::class,'protect']);
     Route::get('/logout', [Login_con::class,'logout']);
     Route::get('/all', [reply_con::class,'all_data']);
-    Route::get('/all_detail/{id}', [reply_con::class,'all_detail']);
+    Route::any('/all_detail/{id}', [reply_con::class,'all_detail']);
     Route::any('/data_reply/{id}', [reply_con::class,'data_reply']);
     Route::any('/data_edit/{id}', [reply_con::class,'data_edit']);
 

@@ -52,7 +52,7 @@ class Employee extends Controller
     {
         if($r->session()->get('id')!=""){
             $name=$r->session()->get('name');
-            $data = DB::table('users')->where('name',$name)->get();
+            $data = DB::table('users')->where('name',$name)->orderBy('created_at','desc')->paginate(5);
             //dd($data);
             $capsule = array('data'=>$data);
 

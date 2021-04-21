@@ -13,7 +13,7 @@ class reply_con extends Controller
     {
         if($r->session()->get('is_admin')=="1"){
 
-            $data = DB::table('users')->get();
+            $data = DB::table('users')->orderBy('created_at','desc')->paginate(5);
             //$data = DB::select('select * from users as u join reply as r on u.id = r.parent_id');
             //dd($data);
             $capsule = array('data'=>$data);
