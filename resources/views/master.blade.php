@@ -20,7 +20,7 @@
       <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="{{url('/home')}}">Home</a></li>
+      <li><a href="{{url('/home')}}">About</a></li>
       <li>@if(!session()->get('id'))<a href=" {{url('/login')}} ">Login/Join</a>@else<a href=" {{url('/welcome')}} ">Logout</a>@endif</li>
       @if(session()->get('is_admin'))
       <li><a href="{{url('/all')}}">Show AllData</a></li>
